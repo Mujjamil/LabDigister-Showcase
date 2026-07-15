@@ -9,7 +9,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-start bg-[#F8F9FC] pt-28 md:pt-36 pb-20 overflow-hidden"
+      className="relative min-h-screen flex flex-col items-center justify-start bg-[#F8F9FC] pb-20 overflow-hidden"
+      style={{ paddingTop: "140px" }}
     >
       <div className="absolute inset-0 dot-pattern opacity-40" />
 
