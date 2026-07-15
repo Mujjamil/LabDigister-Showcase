@@ -44,7 +44,7 @@ export default function Navbar() {
           <Link href="https://plantdigitizer.processplantai.com/" className="text-xs font-bold text-[#5A6478] hover:text-[#0D0D0D] transition-colors">
             Login
           </Link>
-          <Link href="#download" className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#00C853] hover:bg-[#00A846] text-white text-xs font-bold transition-all shadow-sm" style={{ color: "#ffffff" }}>
+          <Link href="#download" className="inline-flex items-center justify-center px-4 py-2 rounded-full bg-[#00C853] hover:bg-[#00A846] text-white! text-xs font-bold transition-all shadow-sm" style={{ color: "#ffffff" }}>
             Get Started
           </Link>
         </div>
