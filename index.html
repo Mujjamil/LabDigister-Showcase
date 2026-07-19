@@ -130,13 +130,10 @@
     .tab-btn.active, .tab-btn:hover { background: var(--blue); color: white; border-color: var(--blue); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
-    .dark-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 36px; }
-    .dark-card { background: rgba(255,255,255,.035); border: 1px solid rgba(255,255,255,.07); border-radius: var(--radius); padding: 24px 22px; transition: background .2s; }
-    .dark-card:hover { background: rgba(255,255,255,.065); }
-    .dark-icon { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; margin-bottom: 16px; }
-    .dark-icon svg { width: 19px; height: 19px; }
-    .dark-card h3 { color: white; font-size: 15px; font-weight: 700; margin-bottom: 8px; letter-spacing: -.1px; }
-    .dark-card p { font-size: 13.5px; color: #64748b; line-height: 1.7; }
+    .platform-points { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; max-width: 820px; margin: 34px auto 0; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); }
+    .platform-point { padding: 18px 24px; text-align: center; border-right: 1px solid rgba(255,255,255,.1); }
+    .platform-point:last-child { border-right: none; }
+    .platform-point h3 { color: white; font-size: 15px; font-weight: 700; letter-spacing: 0; line-height: 1.35; }
 
     /* Mobile App */
     .app-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 60px; }
@@ -222,7 +219,7 @@
       .hero-visual::after { right: calc(50% - 230px); bottom: 118px; }
       .feature-line { grid-template-columns: 42px 1fr; gap: 18px; align-items: start; }
       .feature-line p { grid-column: 2; }
-      .dark-grid { grid-template-columns: repeat(2,1fr); }
+      .platform-points { max-width: 680px; }
       .app-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: repeat(2,1fr); }
       .steps-grid::before { display: none; }
@@ -233,7 +230,10 @@
     @media(max-width:640px) {
       .container, .hero-inner, .nav-inner { padding-left: 20px; padding-right: 20px; }
       .section { padding: 72px 0; }
-      .use-cases-grid, .dark-grid { grid-template-columns: 1fr; }
+      .use-cases-grid { grid-template-columns: 1fr; }
+      .platform-points { grid-template-columns: 1fr; }
+      .platform-point { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
+      .platform-point:last-child { border-bottom: none; }
       .feature-list { margin-top: 30px; }
       .feature-line { grid-template-columns: 38px 1fr; gap: 16px; padding: 22px 0; }
       .feature-line h3 { font-size: 16px; }
@@ -386,27 +386,15 @@
       <div class="tab-panel" id="tab-export"><img src="images/web-export.png" alt="Export" /></div>
       <div class="tab-panel" id="tab-select"><img src="images/web-select.png" alt="Plant Select" /></div>
     </div>
-    <div class="dark-grid">
-      <div class="dark-card reveal">
-        <div class="dark-icon" style="background:rgba(96,165,250,.12)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
-        </div>
+    <div class="platform-points">
+      <div class="platform-point reveal">
         <h3>Activity Dashboard</h3>
-        <p>Instant overview: total records, today's entries, weekly trend, and sample locations all on one screen.</p>
       </div>
-      <div class="dark-card reveal">
-        <div class="dark-icon" style="background:rgba(52,211,153,.12)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-        </div>
+      <div class="platform-point reveal">
         <h3>Consolidated Records</h3>
-        <p>Raw or consolidated records filtered by location, shift, date range, and user with smart parameter merging.</p>
       </div>
-      <div class="dark-card reveal">
-        <div class="dark-icon" style="background:rgba(251,191,36,.12)">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
+      <div class="platform-point reveal">
         <h3>Admin Controls</h3>
-        <p>Manage users, assign plants and roles, configure sample locations and parameters from one admin panel.</p>
       </div>
     </div>
   </div>
@@ -624,7 +612,7 @@ window.addEventListener('scroll', () => {
   nav.style.boxShadow = window.scrollY > 40 ? '0 2px 20px rgba(15,23,42,.08)' : 'none';
   nav.style.borderColor = window.scrollY > 40 ? 'var(--border-light)' : 'transparent';
 });
-document.querySelectorAll('.feature-list .feature-line, .use-cases-grid .use-case-card, .steps-grid .step, .dark-grid .dark-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
+document.querySelectorAll('.feature-list .feature-line, .platform-points .platform-point, .use-cases-grid .use-case-card, .steps-grid .step').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
 </script>
 </body>
 </html>
