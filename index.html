@@ -266,6 +266,99 @@
       .hero-visual::before { left: calc(50% - 150px); bottom: 48px; }
       .hero-visual::after { right: calc(50% - 150px); bottom: 88px; }
     }
+
+    @page {
+      size: 1280px 720px;
+      margin: 0;
+    }
+
+    @media print {
+      *, *::before, *::after {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      html,
+      body {
+        width: 1280px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        overflow: visible !important;
+        background: white !important;
+      }
+
+      nav {
+        position: static !important;
+        min-height: 76px !important;
+        box-shadow: none !important;
+        border-bottom: 1px solid var(--border-light) !important;
+        background: white !important;
+      }
+
+      .nav-toggle,
+      .nav-cta {
+        display: none !important;
+      }
+
+      .nav-links {
+        display: flex !important;
+        position: static !important;
+        flex-direction: row !important;
+        box-shadow: none !important;
+        border: 0 !important;
+        background: transparent !important;
+      }
+
+      .nav-links a {
+        border: 0 !important;
+        padding: 0 !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .hero,
+      .section,
+      .section-sm,
+      .download-section,
+      .cta-section {
+        width: 1280px !important;
+        min-height: 720px !important;
+        break-after: page !important;
+        page-break-after: always !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .hero {
+        padding: 70px 0 40px !important;
+      }
+
+      .section,
+      .section-sm {
+        display: flex !important;
+        align-items: center !important;
+        padding: 72px 0 !important;
+      }
+
+      .download-section,
+      .cta-section {
+        display: flex !important;
+        align-items: center !important;
+      }
+
+      footer {
+        break-after: auto !important;
+        page-break-after: auto !important;
+      }
+
+      a[href]::after {
+        content: "" !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -351,7 +444,6 @@
     </div>
   </div>
 </section>
-
 
 <section class="section web-showcase" id="web-platform">
   <div class="container">
@@ -535,6 +627,10 @@
     </div>
   </div>
 </section>
+
+
+
+
 
 
 
