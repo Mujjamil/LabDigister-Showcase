@@ -164,12 +164,9 @@
     .step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
 
     /* Use Cases */
-    .use-cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 44px; }
-    .use-case-card { background: white; border-radius: var(--radius); padding: 24px 22px; border: 1px solid var(--border); box-shadow: var(--shadow-xs); transition: box-shadow .2s, transform .2s; }
-    .use-case-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-    .use-case-emoji { font-size: 26px; margin-bottom: 14px; display: block; line-height: 1; }
-    .use-case-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; letter-spacing: -.1px; }
-    .use-case-card p { font-size: 13.5px; color: var(--muted); line-height: 1.72; }
+    .use-cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; max-width: 840px; margin: 42px auto 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
+    .use-case-item { min-height: 86px; display: grid; place-items: center; padding: 18px; text-align: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .use-case-item h3 { font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: 0; line-height: 1.35; }
 
     /* Download */
     .download-section { background: linear-gradient(140deg, #1d4ed8 0%, #1e3a8a 55%, var(--navy) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
@@ -231,6 +228,7 @@
       .container, .hero-inner, .nav-inner { padding-left: 20px; padding-right: 20px; }
       .section { padding: 72px 0; }
       .use-cases-grid { grid-template-columns: 1fr; }
+      .use-case-item { min-height: 74px; }
       .platform-points { grid-template-columns: 1fr; }
       .platform-point { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
       .platform-point:last-child { border-bottom: none; }
@@ -515,35 +513,23 @@
       <p class="section-desc">Lab Digitiser is purpose-built for water treatment and environmental monitoring at industrial scale.</p>
     </div>
     <div class="use-cases-grid">
-      <div class="use-case-card reveal">
-        <span class="use-case-emoji">&#127981;</span>
+      <div class="use-case-item reveal">
         <h3>ETP Plants</h3>
-        <p>Record and track outlet quality parameters across multiple zones and shifts, ensuring compliance with discharge norms.</p>
       </div>
-      <div class="use-case-card reveal">
-        <span class="use-case-emoji">&#128167;</span>
+      <div class="use-case-item reveal">
         <h3>WRP Plants</h3>
-        <p>Monitor inlet and treated water quality in real-time, catching deviations before they become costly problems.</p>
       </div>
-      <div class="use-case-card reveal">
-        <span class="use-case-emoji">&#127970;</span>
+      <div class="use-case-item reveal">
         <h3>Multi-Site Companies</h3>
-        <p>Organisations with multiple plant locations can centrally manage all data under one admin account with ease.</p>
       </div>
-      <div class="use-case-card reveal">
-        <span class="use-case-emoji">&#128203;</span>
+      <div class="use-case-item reveal">
         <h3>Regulatory Compliance</h3>
-        <p>Generate audit-ready consolidated CSV exports with all required fields: date, shift, zone, and every parameter.</p>
       </div>
-      <div class="use-case-card reveal">
-        <span class="use-case-emoji">&#128101;</span>
+      <div class="use-case-item reveal">
         <h3>Distributed Teams</h3>
-        <p>Multiple operators across shifts submit readings independently. Admins get a unified view without spreadsheets.</p>
       </div>
-      <div class="use-case-card reveal">
-        <span class="use-case-emoji">&#128200;</span>
+      <div class="use-case-item reveal">
         <h3>Trend Analysis</h3>
-        <p>Weekly activity charts and plant-type breakdowns help managers spot patterns and make data-driven decisions.</p>
       </div>
     </div>
   </div>
@@ -612,7 +598,7 @@ window.addEventListener('scroll', () => {
   nav.style.boxShadow = window.scrollY > 40 ? '0 2px 20px rgba(15,23,42,.08)' : 'none';
   nav.style.borderColor = window.scrollY > 40 ? 'var(--border-light)' : 'transparent';
 });
-document.querySelectorAll('.feature-list .feature-line, .platform-points .platform-point, .use-cases-grid .use-case-card, .steps-grid .step').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
+document.querySelectorAll('.feature-list .feature-line, .platform-points .platform-point, .use-cases-grid .use-case-item, .steps-grid .step').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
 </script>
 </body>
 </html>
