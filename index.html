@@ -93,14 +93,20 @@
     .stat-label { font-size: 11.5px; color: var(--muted); margin-top: 5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
     .hero-visual { min-height: 520px; display: flex; justify-content: center; align-items: center; position: relative; padding: 0 18px 10px 10px; perspective: 1000px; }
     .hero-visual::before, .hero-visual::after { content: ''; position: absolute; width: 72px; height: 30px; border-radius: 50%; background: #222; opacity: .92; filter: blur(.2px); transform: rotate(-24deg); box-shadow: 0 16px 20px rgba(2,8,23,.14); }
-    .hero-visual::before { left: 74px; bottom: 80px; }
-    .hero-visual::after { right: 28px; bottom: 132px; width: 82px; height: 34px; opacity: .88; }
-    .phone-main { position: relative; width: min(45vw, 285px); z-index: 2; filter: drop-shadow(0 26px 26px rgba(2,8,23,.18)); transform: rotate(-11deg); animation: float 5s ease-in-out infinite; }
+    .hero-visual::before { left: 112px; bottom: 78px; }
+    .hero-visual::after { right: 54px; bottom: 126px; width: 82px; height: 34px; opacity: .88; }
+    .phone-main { position: relative; width: min(34vw, 225px); z-index: 2; margin-left: 250px; margin-top: 36px; filter: drop-shadow(0 26px 26px rgba(2,8,23,.18)); transform: rotate(-7deg); animation: float 5s ease-in-out infinite; }
     .phone-main img { width: 100%; border-radius: 34px; display: block; }
-    .phone-second { position: absolute; right: 40px; top: 58px; width: min(34vw, 228px); opacity: .98; z-index: 1; filter: drop-shadow(0 22px 24px rgba(2,8,23,.16)); transform: rotate(12deg); animation: floatAlt 5.6s ease-in-out infinite 1s; }
-    .phone-second img { width: 100%; border-radius: 30px; display: block; }
-    @keyframes float { 0%,100%{transform:translateY(0) rotate(-11deg)} 50%{transform:translateY(-12px) rotate(-11deg)} }
-    @keyframes floatAlt { 0%,100%{transform:translateY(0) rotate(12deg)} 50%{transform:translateY(-10px) rotate(12deg)} }
+    .web-main { position: absolute; left: 4px; top: 116px; width: min(46vw, 390px); z-index: 1; border-radius: 18px; overflow: hidden; background: white; border: 1px solid #e6ebf3; filter: drop-shadow(0 24px 34px rgba(2,8,23,.16)); transform: rotate(3deg); animation: floatWeb 5.8s ease-in-out infinite 1s; }
+    .web-main img { width: 100%; display: block; }
+    .phone-main, .web-main { transition: transform .32s ease, filter .32s ease, z-index 0s; }
+    .hero-visual:hover .phone-main, .hero-visual:hover .web-main { animation-play-state: paused; }
+    .web-main:hover { z-index: 4; transform: translate(28px, -24px) rotate(0deg) scale(1.08); filter: drop-shadow(0 34px 42px rgba(2,8,23,.22)); }
+    .web-main:hover + .phone-main { z-index: 2; transform: translate(54px, 18px) rotate(-5deg) scale(.94); filter: drop-shadow(0 18px 24px rgba(2,8,23,.12)); }
+    .phone-main:hover { z-index: 4; transform: translate(-16px, -16px) rotate(-3deg) scale(1.05); filter: drop-shadow(0 34px 42px rgba(2,8,23,.22)); }
+    .hero-visual:has(.phone-main:hover) .web-main { transform: translate(-18px, 12px) rotate(2deg) scale(.96); filter: drop-shadow(0 18px 24px rgba(2,8,23,.12)); }
+    @keyframes float { 0%,100%{transform:translateY(0) rotate(-7deg)} 50%{transform:translateY(-12px) rotate(-7deg)} }
+    @keyframes floatWeb { 0%,100%{transform:translateY(0) rotate(3deg)} 50%{transform:translateY(-8px) rotate(3deg)} }
 
     /* Feature Lines */
     .features-bg { background: #fbfcff; }
@@ -164,9 +170,12 @@
     .step p { font-size: 13px; color: var(--muted); line-height: 1.7; }
 
     /* Use Cases */
-    .use-cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; max-width: 840px; margin: 42px auto 0; border-top: 1px solid var(--border); border-left: 1px solid var(--border); }
-    .use-case-item { min-height: 86px; display: grid; place-items: center; padding: 18px; text-align: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-    .use-case-item h3 { font-size: 16px; font-weight: 700; color: var(--ink); letter-spacing: 0; line-height: 1.35; }
+    .use-cases-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; max-width: 900px; margin: 42px auto 0; counter-reset: usecase; }
+    .use-case-item { min-height: 106px; display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; padding: 20px; text-align: left; border: 1px solid #e8edf5; border-radius: 8px; background: linear-gradient(180deg, #fff 0%, #fbfcff 100%); position: relative; overflow: hidden; transition: border-color .18s, box-shadow .18s, transform .18s; counter-increment: usecase; }
+    .use-case-item::before { content: counter(usecase, decimal-leading-zero); position: absolute; top: 16px; left: 20px; font-size: 11px; font-weight: 800; letter-spacing: .08em; color: var(--blue); opacity: .8; }
+    .use-case-item::after { content: ''; position: absolute; top: 0; right: 0; width: 42px; height: 42px; background: radial-gradient(circle at top right, rgba(23,71,255,.16), transparent 68%); pointer-events: none; }
+    .use-case-item:hover { transform: translateY(-2px); border-color: #dbe5ff; box-shadow: var(--shadow-md); }
+    .use-case-item h3 { font-size: 16px; font-weight: 800; color: var(--ink); letter-spacing: 0; line-height: 1.35; max-width: 190px; }
 
     /* Download */
     .download-section { background: linear-gradient(140deg, #1d4ed8 0%, #1e3a8a 55%, var(--navy) 100%); padding: 80px 28px; position: relative; overflow: hidden; }
@@ -210,8 +219,8 @@
       .hero-cta { justify-content: center; }
       .hero-stats { justify-content: center; }
       .hero-visual { min-height: 460px; padding: 0; }
-      .phone-main { width: 250px; }
-      .phone-second { right: calc(50% - 248px); width: 205px; }
+      .phone-main { width: 230px; margin-left: 210px; }
+      .web-main { left: calc(50% - 310px); width: 360px; top: 110px; }
       .hero-visual::before { left: calc(50% - 224px); bottom: 70px; }
       .hero-visual::after { right: calc(50% - 230px); bottom: 118px; }
       .feature-line { grid-template-columns: 42px 1fr; gap: 18px; align-items: start; }
@@ -228,7 +237,8 @@
       .container, .hero-inner, .nav-inner { padding-left: 20px; padding-right: 20px; }
       .section { padding: 72px 0; }
       .use-cases-grid { grid-template-columns: 1fr; }
-      .use-case-item { min-height: 74px; }
+      .use-case-item { min-height: 92px; }
+      .use-case-item h3 { max-width: none; }
       .platform-points { grid-template-columns: 1fr; }
       .platform-point { border-right: none; border-bottom: 1px solid rgba(255,255,255,.1); }
       .platform-point:last-child { border-bottom: none; }
@@ -249,8 +259,8 @@
       .hero-cta { gap: 10px; }
       .store-btn { width: min(100%, 230px); }
       .hero-visual { min-height: 390px; margin-top: 6px; }
-      .phone-main { width: 214px; }
-      .phone-second { width: 168px; right: calc(50% - 190px); top: 46px; }
+      .phone-main { width: 190px; margin-left: 150px; }
+      .web-main { width: 280px; left: calc(50% - 218px); top: 82px; border-radius: 14px; }
       .hero-visual::before { left: calc(50% - 176px); bottom: 54px; width: 58px; height: 24px; }
       .hero-visual::after { right: calc(50% - 172px); bottom: 98px; width: 62px; height: 26px; }
       .app-phones { flex-direction: column; align-items: center; }
@@ -261,14 +271,14 @@
       .hero-cta { flex-direction: column; align-items: center; }
       .store-btn { width: min(100%, 260px); }
       .hero-visual { min-height: 340px; }
-      .phone-main { width: 190px; }
-      .phone-second { width: 145px; right: calc(50% - 158px); }
+      .phone-main { width: 164px; margin-left: 118px; }
+      .web-main { width: 225px; left: calc(50% - 180px); top: 70px; }
       .hero-visual::before { left: calc(50% - 150px); bottom: 48px; }
       .hero-visual::after { right: calc(50% - 150px); bottom: 88px; }
     }
 
     @page {
-      size: 1280px 720px;
+      size: 13.333in 7.5in;
       margin: 0;
     }
 
@@ -283,76 +293,165 @@
         width: 1280px !important;
         margin: 0 !important;
         padding: 0 !important;
-        display: block !important;
         overflow: visible !important;
         background: white !important;
       }
 
-      nav {
-        position: static !important;
-        min-height: 76px !important;
-        box-shadow: none !important;
-        border-bottom: 1px solid var(--border-light) !important;
-        background: white !important;
+      body {
+        display: block !important;
       }
 
+      nav,
+      footer,
       .nav-toggle,
-      .nav-cta {
+      .nav-cta,
+      .tab-nav {
         display: none !important;
-      }
-
-      .nav-links {
-        display: flex !important;
-        position: static !important;
-        flex-direction: row !important;
-        box-shadow: none !important;
-        border: 0 !important;
-        background: transparent !important;
-      }
-
-      .nav-links a {
-        border: 0 !important;
-        padding: 0 !important;
       }
 
       .reveal {
         opacity: 1 !important;
         transform: none !important;
+        transition: none !important;
       }
 
-      .hero,
-      .section,
-      .section-sm,
-      .download-section,
-      .cta-section {
+      .phone-main,
+      .web-main {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .btn,
+      .store-btn,
+      .btn-download {
+        box-shadow: none !important;
+      }
+
+      body > section {
         width: 1280px !important;
+        height: 720px !important;
         min-height: 720px !important;
+        max-height: 720px !important;
+        margin: 0 !important;
+        padding: 54px 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        overflow: hidden !important;
+        box-shadow: none !important;
         break-after: page !important;
         page-break-after: always !important;
         break-inside: avoid !important;
         page-break-inside: avoid !important;
       }
 
-      .hero {
-        padding: 70px 0 40px !important;
+      body > section:last-of-type {
+        break-after: auto !important;
+        page-break-after: auto !important;
       }
 
-      .section,
-      .section-sm {
-        display: flex !important;
+      .container,
+      .hero-inner,
+      .download-inner {
+        width: 1100px !important;
+        max-width: 1100px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .hero {
+        padding: 40px 0 !important;
+      }
+
+      .hero-inner {
+        grid-template-columns: .9fr 1.1fr !important;
+        gap: 34px !important;
         align-items: center !important;
-        padding: 72px 0 !important;
+      }
+
+      .hero h1 {
+        font-size: 68px !important;
+      }
+
+      .hero-visual {
+        min-height: 520px !important;
+      }
+
+      .phone-main {
+        width: 225px !important;
+        margin-left: 250px !important;
+        margin-top: 36px !important;
+      }
+
+      .web-main {
+        width: 390px !important;
+        left: 4px !important;
+        top: 116px !important;
+      }
+
+      .web-showcase {
+        padding: 42px 0 !important;
+      }
+
+      .web-showcase .section-title,
+      #mobile-app .section-title,
+      #how-it-works .section-title,
+      #features .section-title,
+      #use-cases .section-title {
+        font-size: 34px !important;
+      }
+
+      .browser-frame {
+        margin-top: 24px !important;
+      }
+
+      .browser-frame img {
+        max-height: 420px !important;
+        object-fit: contain !important;
+      }
+
+      .platform-points {
+        margin-top: 22px !important;
+      }
+
+      #mobile-app {
+        padding: 42px 0 !important;
+      }
+
+      .app-grid {
+        margin-top: 34px !important;
+        gap: 42px !important;
+      }
+
+      .checklist li {
+        padding: 8px 0 !important;
+      }
+
+      .app-phone {
+        width: 160px !important;
+      }
+
+      .screen-strip,
+      #mobile-app > .container > .reveal:last-child {
+        display: none !important;
       }
 
       .download-section,
       .cta-section {
-        display: flex !important;
-        align-items: center !important;
+        padding-left: 28px !important;
+        padding-right: 28px !important;
       }
 
-      footer {
-        break-after: auto !important;
-        page-break-after: auto !important;
+      .download-phone {
+        display: block !important;
+      }
+
+      .steps-grid {
+        margin-top: 38px !important;
+      }
+
+      .feature-list,
+      .use-cases-grid {
+        margin-top: 34px !important;
       }
 
       a[href]::after {
@@ -409,8 +508,8 @@
       </div>
     </div>
     <div class="hero-visual">
+      <div class="web-main"><img src="images/web-dashboard.png" alt="Lab Digitiser Web Dashboard" /></div>
       <div class="phone-main"><img src="images/app-home.png" alt="Lab Digitiser Mobile App Home" /></div>
-      <div class="phone-second"><img src="images/app-entries.png" alt="Lab Digitiser Entry Wizard" /></div>
     </div>
   </div>
 </section>
