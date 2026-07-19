@@ -102,27 +102,18 @@
     @keyframes float { 0%,100%{transform:translateY(0) rotate(-11deg)} 50%{transform:translateY(-12px) rotate(-11deg)} }
     @keyframes floatAlt { 0%,100%{transform:translateY(0) rotate(12deg)} 50%{transform:translateY(-10px) rotate(12deg)} }
 
-    /* Feature Cards */
-    .features-bg { background: var(--bg-section); }
-    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 48px; }
-    .feature-card { background: var(--card-bg); border-radius: var(--radius); padding: 24px 22px; transition: box-shadow .2s, transform .2s; box-shadow: var(--shadow-sm); border: 1px solid var(--border); position: relative; overflow: hidden; }
-    .feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent-color, var(--blue)); border-radius: var(--radius) var(--radius) 0 0; }
-    .feature-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
-    .feature-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 18px; }
-    .feature-icon-wrap { width: 40px; height: 40px; border-radius: 10px; background: var(--icon-bg, var(--blue-soft)); display: grid; place-items: center; flex-shrink: 0; }
-    .feature-icon-wrap svg { width: 18px; height: 18px; }
-    .feature-num { font-size: 11px; font-weight: 600; color: var(--subtle); letter-spacing: .05em; }
-    .feature-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; letter-spacing: -.15px; line-height: 1.3; }
-    .feature-card p { font-size: 13.5px; color: var(--muted); line-height: 1.72; }
-
-    /* Tags */
-    .tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600; letter-spacing: .04em; padding: 4px 10px; border-radius: 100px; }
-    .tag-blue { background: var(--blue-soft); color: var(--blue); border: 1px solid var(--blue-border); }
-    .tag-green { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
-    .tag-amber { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
-    .tag-purple { background: #faf5ff; color: #7c3aed; border: 1px solid #e9d5ff; }
-    .tag-red { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
-    .tag-teal { background: #f0fdfa; color: #0d9488; border: 1px solid #99f6e4; }
+    /* Feature Lines */
+    .features-bg { background: #fbfcff; }
+    .features-bg.section { padding: 70px 0 78px; }
+    .features-bg .section-title { font-size: clamp(28px, 3.6vw, 48px); font-weight: 500; letter-spacing: 0; }
+    .features-bg .section-desc { max-width: 560px; font-size: 15.5px; line-height: 1.75; }
+    .feature-list { max-width: 860px; margin: 38px auto 0; border-top: 1px solid #e8edf5; }
+    .feature-line { display: grid; grid-template-columns: 48px minmax(160px, .75fr) 1fr; gap: 24px; align-items: center; padding: 24px 0; border-bottom: 1px solid #e8edf5; }
+    .feature-line:hover .feature-icon-wrap { background: var(--ink); color: white; }
+    .feature-icon-wrap { width: 38px; height: 38px; border-radius: 50%; background: #eef3ff; color: var(--blue); display: grid; place-items: center; flex-shrink: 0; transition: background .18s, color .18s; }
+    .feature-icon-wrap svg { width: 18px; height: 18px; stroke: currentColor; }
+    .feature-line h3 { font-size: 17px; font-weight: 700; color: var(--ink); letter-spacing: 0; line-height: 1.35; }
+    .feature-line p { font-size: 14px; color: #748198; line-height: 1.7; }
 
     /* Web Showcase */
     .web-showcase { background: var(--navy); color: white; }
@@ -229,7 +220,8 @@
       .phone-second { right: calc(50% - 248px); width: 205px; }
       .hero-visual::before { left: calc(50% - 224px); bottom: 70px; }
       .hero-visual::after { right: calc(50% - 230px); bottom: 118px; }
-      .features-grid { grid-template-columns: repeat(2,1fr); }
+      .feature-line { grid-template-columns: 42px 1fr; gap: 18px; align-items: start; }
+      .feature-line p { grid-column: 2; }
       .dark-grid { grid-template-columns: repeat(2,1fr); }
       .app-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: repeat(2,1fr); }
@@ -241,7 +233,11 @@
     @media(max-width:640px) {
       .container, .hero-inner, .nav-inner { padding-left: 20px; padding-right: 20px; }
       .section { padding: 72px 0; }
-      .features-grid, .use-cases-grid, .dark-grid { grid-template-columns: 1fr; }
+      .use-cases-grid, .dark-grid { grid-template-columns: 1fr; }
+      .feature-list { margin-top: 30px; }
+      .feature-line { grid-template-columns: 38px 1fr; gap: 16px; padding: 22px 0; }
+      .feature-line h3 { font-size: 16px; }
+      .feature-line p { font-size: 13.5px; }
       .steps-grid { grid-template-columns: 1fr; }
       .nav-toggle { display: inline-flex; }
       .nav-links { position: absolute; top: calc(100% + 8px); left: 16px; right: 16px; display: none; flex-direction: column; align-items: stretch; gap: 0; background: white; border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 18px 45px rgba(15,23,42,.12); overflow: hidden; }
@@ -332,75 +328,30 @@
   <div class="container">
     <div class="text-center reveal">
       <div class="section-label">Why Lab Digitiser</div>
-      <h2 class="section-title">Everything your plant team needs</h2>
-      <p class="section-desc">From field operators to plant managers, Lab Digitiser connects every role into one seamless workflow.</p>
+      <h2 class="section-title">Made for daily plant readings</h2>
+      <p class="section-desc">A simple way for operators to capture lab data and for managers to review it without chasing paper logs.</p>
     </div>
-    <div class="features-grid">
-      <div class="feature-card reveal" style="--accent-color:#2563eb;--icon-bg:#eff6ff">
-        <div class="feature-top">
-          <div class="feature-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          </div>
-          <span class="feature-num">01</span>
+    <div class="feature-list">
+      <div class="feature-line reveal">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
         </div>
-        <span class="tag tag-blue" style="margin-bottom:10px">Multi-plant</span>
-        <h3>Multi-Plant Management</h3>
-        <p>Manage ETP and WRP plants across multiple companies from a single account with data fully isolated per plant.</p>
+        <h3>Quick entry from the field</h3>
+        <p>Operators add plant, shift, location, and readings from their phone in a clean step-by-step flow.</p>
       </div>
-      <div class="feature-card reveal" style="--accent-color:#16a34a;--icon-bg:#f0fdf4">
-        <div class="feature-top">
-          <div class="feature-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <span class="feature-num">02</span>
+      <div class="feature-line reveal">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m7 15 4-4 3 3 5-7"/></svg>
         </div>
-        <span class="tag tag-green" style="margin-bottom:10px">Analytics</span>
-        <h3>Real-Time Analytics</h3>
-        <p>Visualise activity trends over the last 7 days, records by plant type, and submission velocity with live charts.</p>
+        <h3>Clear dashboard view</h3>
+        <p>Review recent submissions, trends, and plant activity from one web dashboard built for quick checks.</p>
       </div>
-      <div class="feature-card reveal" style="--accent-color:#d97706;--icon-bg:#fffbeb">
-        <div class="feature-top">
-          <div class="feature-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-          </div>
-          <span class="feature-num">03</span>
+      <div class="feature-line reveal">
+        <div class="feature-icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 15h8"/><path d="M8 18h5"/></svg>
         </div>
-        <span class="tag tag-amber" style="margin-bottom:10px">Access</span>
-        <h3>Role-Based Access</h3>
-        <p>Admins manage plants, users, and parameters. Members submit readings. Granular permissions ensure the right access.</p>
-      </div>
-      <div class="feature-card reveal" style="--accent-color:#7c3aed;--icon-bg:#faf5ff">
-        <div class="feature-top">
-          <div class="feature-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          </div>
-          <span class="feature-num">04</span>
-        </div>
-        <span class="tag tag-purple" style="margin-bottom:10px">Mobile</span>
-        <h3>Mobile Entry Wizard</h3>
-        <p>Field operators submit multi-step entries from their phone: plant, location, date/time, parameters in a few taps.</p>
-      </div>
-      <div class="feature-card reveal" style="--accent-color:#dc2626;--icon-bg:#fef2f2">
-        <div class="feature-top">
-          <div class="feature-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          </div>
-          <span class="feature-num">05</span>
-        </div>
-        <span class="tag tag-red" style="margin-bottom:10px">Export</span>
-        <h3>Data Export</h3>
-        <p>Export consolidated or raw records to CSV with flexible date range, location, and format filters for compliance reports.</p>
-      </div>
-      <div class="feature-card reveal" style="--accent-color:#0d9488;--icon-bg:#f0fdfa">
-        <div class="feature-top">
-          <div class="feature-icon-wrap">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#0d9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <span class="feature-num">06</span>
-        </div>
-        <span class="tag tag-teal" style="margin-bottom:10px">Shifts</span>
-        <h3>Shift-Aware Recording</h3>
-        <p>Entries tagged by shift (1st, 2nd, Night) and auto-grouped. Multiple entries per shift show the most recent value.</p>
+        <h3>Export when you need it</h3>
+        <p>Download records for audits, reviews, or reporting with the filters your plant team already uses.</p>
       </div>
     </div>
   </div>
@@ -673,7 +624,7 @@ window.addEventListener('scroll', () => {
   nav.style.boxShadow = window.scrollY > 40 ? '0 2px 20px rgba(15,23,42,.08)' : 'none';
   nav.style.borderColor = window.scrollY > 40 ? 'var(--border-light)' : 'transparent';
 });
-document.querySelectorAll('.features-grid .feature-card, .use-cases-grid .use-case-card, .steps-grid .step, .dark-grid .dark-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
+document.querySelectorAll('.feature-list .feature-line, .use-cases-grid .use-case-card, .steps-grid .step, .dark-grid .dark-card').forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; });
 </script>
 </body>
 </html>
